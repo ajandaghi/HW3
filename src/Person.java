@@ -2,7 +2,7 @@ public class Person {
     private String fullName;
     private String nationalCode;
     private String birthdate;
-    private String address;
+    private String address ;
 
     public Person(String fullName, String nationalCode, String birthdate, String address) {
         this.fullName = fullName;
