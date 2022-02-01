@@ -18,7 +18,7 @@ public class Actions {
       professorsList=new ProfessorsList();
       coursesList= new CoursesList();
       courseTakenList = new CourseTakenList();
-      staffsList.addStuff(new Staffs("Administrator","000000","1976-01-09","Tehran","001","admin","admin",5000000L));
+      staffsList.addStuff(new Staffs("Administrator","0000000000","1976-01-09","Tehran","001","admin","admin",5000000L));
    }
 
    public void startProgram() {

@@ -1,10 +1,18 @@
+import exceptions.NotValidNationalId;
+
 public class Person {
     private String fullName;
     private String nationalCode;
     private String birthdate;
-    private String address ;
+    private String address;
 
     public Person(String fullName, String nationalCode, String birthdate, String address) {
+        try {
+            checkNationalId(nationalCode);
+        }
+        catch (NotValidNationalId e){
+            e.printStackTrace();
+        }
         this.fullName = fullName;
         this.nationalCode = nationalCode;
         this.birthdate = birthdate;
@@ -27,7 +35,15 @@ public class Person {
     }
 
     public void setNationalCode(String nationalCode) {
-        this.nationalCode = nationalCode;
+        try {
+            checkNationalId(nationalCode);
+            this.nationalCode = nationalCode;
+
+        }
+        catch (NotValidNationalId e){
+            e.printStackTrace();
+        }
+
     }
 
     public String getBirthdate() {
@@ -44,5 +60,16 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void checkNationalId(String nationalId){
+        if(nationalId.length()!=10){
+            throw new NotValidNationalId("national ID must have 10 length");
+        }
+        for (int i=0;i<nationalId.toCharArray().length;i++){
+            if(!Character.isDigit(nationalId.toCharArray()[i])){
+                throw new NotValidNationalId("national Id must have only digit.");
+            }
+        }
     }
 }

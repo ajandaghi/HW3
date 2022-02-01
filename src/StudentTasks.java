@@ -85,7 +85,6 @@ private int courseNum=0;
                 boolean rep=false;
                 if (actions.getCoursesList().getList()[i].getCourseId().equals(input)) {
                     for (int j = 0; j < actions.getCourseTakenList().getListIndex(); j++) {
-
                         if (actions.getCourseTakenList().getList()[j].getCourseId().equals(actions.getCoursesList().getList()[i].getCourseId())) {
                             rep = true;
                             System.out.println("this course before is selected.");
@@ -97,17 +96,20 @@ private int courseNum=0;
                 }
 
 
+
                     if ((prevTermAverage(actions) == -1 || prevTermAverage(actions) <= 18) && courseNum <= 20 &&!rep) {
                         actions.getCourseTakenList().addCrsTkn(new CourseTaken(input, getStdIdByUser(actions), actions.getCoursesList().getList()[i].getProfId()));
                         System.out.println(input + " added to your courses");
                         courseNum++;
+                        break;
                     } else if (prevTermAverage(actions) >= 18 && courseNum <= 20 &&!rep) {
                         actions.getCourseTakenList().addCrsTkn(new CourseTaken(input, getStdIdByUser(actions), actions.getCoursesList().getList()[i].getProfId()));
                         courseNum++;
                         System.out.println(input + " added to your courses");
+                        break;
 
                     } else if(!rep) {
-                        System.out.println("yor limit is over!");
+                        System.out.println("your limit is over!");
                     }
 
             }
